@@ -16,7 +16,7 @@ public class Tweet implements Serializable {
     @Id
     @SequenceGenerator(name = "tweet_id_generator", sequenceName = "tweet_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "tweet_id_generator")
-    private Integer id;
+    private Long id;
 
     @Column(nullable=false)
     @NotEmpty

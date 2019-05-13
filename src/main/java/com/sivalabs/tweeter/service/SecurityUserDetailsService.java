@@ -32,7 +32,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
     private org.springframework.security.core.userdetails.User convert(User user) {
         return new org.springframework.security.core.userdetails.User(
-                user.getName(),
+                user.getEmail(),
                 user.getPassword(),
                 user.getRoles().stream().map(r -> new SimpleGrantedAuthority(r.getName()))
                         .collect(Collectors.toList())

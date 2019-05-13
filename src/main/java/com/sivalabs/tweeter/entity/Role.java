@@ -16,7 +16,7 @@ public class Role implements Serializable
 	@Id
 	@SequenceGenerator(name="role_generator", sequenceName="role_sequence", allocationSize = 1)
 	@GeneratedValue(generator = "role_generator")
-	private Integer id;
+	private Long id;
 	
 	@Column(nullable=false, unique=true)
 	@NotEmpty

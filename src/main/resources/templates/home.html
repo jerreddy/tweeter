@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{mainLayout}"
->
+      layout:decorate="~{mainLayout}">
 <head>
     <title>Home</title>
 </head>
 <body>
 
 <div layout:fragment="content">
-    <p>Welcome User!</p>
+
+    <div class="collapse" id="collapseExample" style="padding-bottom: 20px;">
+        <div class="card card-body" >
+            <form class="form" @submit.prevent="saveTweet"
+                  style="padding-bottom: 5px;">
+                <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Enter message"
+                      v-model="newTweet.content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item" v-for="t in tweets">
+                {{t.content}}
+            </li>
+        </ul>
+    </div>
 </div>
 
 </body>

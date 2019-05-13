@@ -1,5 +1,6 @@
 package com.sivalabs.tweeter.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class User implements Serializable
 	@Id
 	@SequenceGenerator(name = "user_id_generator", sequenceName = "user_id_seq", allocationSize = 1)
 	@GeneratedValue(generator = "user_id_generator")
-	private Integer id;
+	private Long id;
 
 	@Column(nullable=false, unique=true)
 	@NotEmpty
@@ -36,6 +37,7 @@ public class User implements Serializable
 	@NotEmpty()
 	private String name;
 
+	@JsonIgnore
 	@ManyToMany(cascade=CascadeType.MERGE)
 	@JoinTable(
 	      name="user_role",

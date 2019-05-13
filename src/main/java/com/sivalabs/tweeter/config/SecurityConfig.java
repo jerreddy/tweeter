@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/resources/**", "/webjars/**").permitAll()
                 .antMatchers("/", "/registration", "/forgot-password", "/reset-password").permitAll()
-                .antMatchers(HttpMethod.POST, "/tweets").authenticated()
+                //.anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login")
