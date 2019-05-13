@@ -39,6 +39,12 @@ public class TweetsRestController {
         tweetRepository.save(tweet);
     }
 
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public void deleteTweet(@PathVariable Long id) {
+        tweetRepository.deleteById(id);
+    }
+
     private com.sivalabs.tweeter.entity.User loginUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User) {

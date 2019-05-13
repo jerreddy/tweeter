@@ -29,6 +29,17 @@ new Vue({
                     self.loadTweets();
                 }
             });
+        },
+
+        deleteTweet(id) {
+            let self = this;
+            $.ajax({
+                type: "DELETE",
+                url: 'api/tweets/'+id,
+                success: function() {
+                    self.loadTweets();
+                }
+            });
         }
     },
     computed: {
