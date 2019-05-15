@@ -9,6 +9,14 @@ new Vue({
         this.loadTweets();
     },
     methods: {
+        getCsrfHeaders() {
+            const header = $("meta[name='_csrf_header']").attr("content");
+            const token = $("meta[name='_csrf']").attr("content");
+            let headers = {};
+            headers[header] = token;
+            return headers;
+        },
+
         loadTweets() {
             let self = this;
             $.getJSON( "api/tweets", function( data ) {
@@ -22,6 +30,7 @@ new Vue({
             $.ajax({
                 type: "POST",
                 url: 'api/tweets',
+                headers: self.getCsrfHeaders(),
                 data: JSON.stringify(this.newTweet),
                 contentType: "application/json",
                 success: function() {
@@ -33,9 +42,11 @@ new Vue({
 
         deleteTweet(id) {
             let self = this;
+
             $.ajax({
                 type: "DELETE",
                 url: 'api/tweets/'+id,
+                headers: self.getCsrfHeaders(),
                 success: function() {
                     self.loadTweets();
                 }
