@@ -1,4 +1,4 @@
-package com.sivalabs.tweeter.web.controller;
+package com.sivalabs.todolist.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

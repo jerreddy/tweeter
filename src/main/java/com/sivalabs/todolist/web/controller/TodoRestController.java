@@ -1,8 +1,8 @@
-package com.sivalabs.tweeter.web.controller;
+package com.sivalabs.todolist.web.controller;
 
-import com.sivalabs.tweeter.entity.Tweet;
-import com.sivalabs.tweeter.repo.TweetRepository;
-import com.sivalabs.tweeter.repo.UserRepository;
+import com.sivalabs.todolist.entity.Todo;
+import com.sivalabs.todolist.repo.TodoRepository;
+import com.sivalabs.todolist.repo.UserRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,42 +14,43 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tweets")
-public class TweetsRestController {
+@RequestMapping("/api/todos")
+public class TodoRestController {
 
-    private final TweetRepository tweetRepository;
+    private final TodoRepository todoRepository;
     private final UserRepository userRepository;
 
-    public TweetsRestController(TweetRepository tweetRepository, UserRepository userRepository) {
-        this.tweetRepository = tweetRepository;
+    public TodoRestController(TodoRepository todoRepository, UserRepository userRepository) {
+        this.todoRepository = todoRepository;
         this.userRepository = userRepository;
     }
 
     @GetMapping
-    public List<Tweet> allTweets() {
-        return tweetRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
+    public List<Todo> getTodosByUser() {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
+        return todoRepository.findByCreatedById(loginUser().getId(), sort);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ROLE_USER')")
-    public void saveTweet(@RequestBody Tweet tweet) {
-        tweet.setId(null);
-        tweet.setCreatedBy(loginUser());
-        tweetRepository.save(tweet);
+    public void saveTodo(@RequestBody Todo todo) {
+        todo.setId(null);
+        todo.setCreatedBy(loginUser());
+        todoRepository.save(todo);
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public void deleteTweet(@PathVariable Long id) {
-        tweetRepository.deleteById(id);
+    public void deleteTodo(@PathVariable Long id) {
+        todoRepository.deleteById(id);
     }
 
-    private com.sivalabs.tweeter.entity.User loginUser() {
+    private com.sivalabs.todolist.entity.User loginUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User) {
             User securityUser = (User) authentication.getPrincipal();
-            return userRepository.findByEmail(securityUser.getUsername()).get();
+            return userRepository.findByEmail(securityUser.getUsername()).orElse(null);
         }
         return null;
     }

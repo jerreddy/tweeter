@@ -1,7 +1,7 @@
-package com.sivalabs.tweeter.service;
+package com.sivalabs.todolist.service;
 
-import com.sivalabs.tweeter.entity.User;
-import com.sivalabs.tweeter.repo.UserRepository;
+import com.sivalabs.todolist.entity.User;
+import com.sivalabs.todolist.repo.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service
+@Service("userDetailsService")
 @Transactional
 public class SecurityUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;

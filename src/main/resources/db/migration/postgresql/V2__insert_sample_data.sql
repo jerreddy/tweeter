@@ -5,14 +5,17 @@ INSERT INTO roles (id, name, created_at) VALUES
 ;
 
 INSERT INTO users (email, password, name, created_at) VALUES
-('siva@gmail.com', '$2a$10$CIXGKN9rPfV/mmBMYas.SemoT9mfVUUwUxueFpU3DcWhuNo5fexYC', 'Siva',  CURRENT_TIMESTAMP)
+('admin@gmail.com', '$2a$10$dPLX6R2rnU94KWmNokNILuxmxwkgPLM01/kbWWqb7ULIuG4qIJmpC', 'Admin',  CURRENT_TIMESTAMP),
+('siva@gmail.com', '$2a$10$Ib73a9lzoX60I3UIlwm.8OSfbM8WQDaggieVDjxb1zoC6W/tJAA62', 'Siva',  CURRENT_TIMESTAMP)
 ;
 
 INSERT INTO user_role (user_id, role_id) VALUES
 (1, 1),
-(1, 2)
+(1, 2),
+(2, 2)
 ;
 
-INSERT INTO tweets(content, created_by,created_at) VALUES
-('Hello Tweeter',1,CURRENT_TIMESTAMP)
+INSERT INTO todos(content, created_by,created_at) VALUES
+('Learn AWS',1,CURRENT_TIMESTAMP),
+('Learn Spring',2,CURRENT_TIMESTAMP)
 ;

@@ -1,13 +1,13 @@
-package com.sivalabs.tweeter;
+package com.sivalabs.todolist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TweeterApplication {
+public class TodoListApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TweeterApplication.class, args);
+		SpringApplication.run(TodoListApplication.class, args);
 	}
 
 }

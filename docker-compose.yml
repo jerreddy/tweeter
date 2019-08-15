@@ -1,26 +1,26 @@
 version: '3.1'
 services:
 
-  tweeter:
+  todolist:
     build: .
-    container_name: tweeter
+    container_name: todolist
     ports:
       - "8080:8080"
       - "8787:8787"
     restart: always
     depends_on:
-      - tweeter-db
+      - todolist-db
 
-  tweeter-db:
+  todolist-db:
     image: postgres:10.7
-    container_name: tweeter-db
+    container_name: todolist-db
     environment:
       - POSTGRES_USER=siva
       - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=appdb
       - PGDATA=/data/postgres
     volumes:
-      - ~/data/tweeter-db:/data/postgres
+      - ~/data/todolist-db:/data/postgres
     ports:
       - "5432:5432"
     restart: unless-stopped

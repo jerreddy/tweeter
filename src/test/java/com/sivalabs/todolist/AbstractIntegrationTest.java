@@ -1,4 +1,4 @@
-package com.sivalabs.tweeter;
+package com.sivalabs.todolist;
 
 import org.junit.ClassRule;
 import org.junit.runner.RunWith;

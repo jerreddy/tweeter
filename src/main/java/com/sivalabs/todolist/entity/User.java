@@ -1,4 +1,4 @@
-package com.sivalabs.tweeter.entity;
+package com.sivalabs.todolist.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

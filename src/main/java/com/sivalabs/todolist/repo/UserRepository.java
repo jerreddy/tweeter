@@ -1,6 +1,6 @@
-package com.sivalabs.tweeter.repo;
+package com.sivalabs.todolist.repo;
 
-import com.sivalabs.tweeter.entity.User;
+import com.sivalabs.todolist.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

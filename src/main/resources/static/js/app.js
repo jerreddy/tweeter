@@ -2,11 +2,11 @@ new Vue({
     el: '#app',
 
     data: {
-        tweets: [],
-        newTweet: {}
+        todos: [],
+        newTodo: {}
     },
     mounted: function () {
-        this.loadTweets();
+        this.loadTodos();
     },
     methods: {
         getCsrfHeaders() {
@@ -17,38 +17,38 @@ new Vue({
             return headers;
         },
 
-        loadTweets() {
+        loadTodos() {
             let self = this;
-            $.getJSON( "api/tweets", function( data ) {
-                self.tweets = data
+            $.getJSON( "api/todos", function( data ) {
+                self.todos = data
             });
         },
 
-        saveTweet() {
+        saveTodo() {
             let self = this;
 
             $.ajax({
                 type: "POST",
-                url: 'api/tweets',
+                url: 'api/todos',
                 headers: self.getCsrfHeaders(),
-                data: JSON.stringify(this.newTweet),
+                data: JSON.stringify(this.newTodo),
                 contentType: "application/json",
                 success: function() {
-                    self.newTweet = {};
-                    self.loadTweets();
+                    self.newTodo = {};
+                    self.loadTodos();
                 }
             });
         },
 
-        deleteTweet(id) {
+        deleteTodo(id) {
             let self = this;
 
             $.ajax({
                 type: "DELETE",
-                url: 'api/tweets/'+id,
+                url: 'api/todos/'+id,
                 headers: self.getCsrfHeaders(),
                 success: function() {
-                    self.loadTweets();
+                    self.loadTodos();
                 }
             });
         }

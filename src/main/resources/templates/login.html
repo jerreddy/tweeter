@@ -10,22 +10,20 @@
 <body>
 
 <div layout:fragment="content">
-    <div class="col-md-7 col-md-offset-4">
-        <div th:if="${param.error}">
-            <div class="alert alert-danger">Invalid Email and Password.</div>
-        </div>
-        <div th:if="${param.logout}">
-            <div class="alert alert-success">You have been logged out.</div>
-        </div>
-    </div>
+    <div class="row justify-content-md-center">
 
-    <div class="row">
-        <div class="col-md-7 col-md-offset-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Login Form</h3>
+        <div class="col-md-auto col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Login Form</h2>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Invalid Email and Password.</div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-success">You have been logged out.</div>
+                    </div>
                     <form id="loginForm" method="post" th:action="@{/login}" class="form-horizontal" role="form"
                           cssStyle="width: 800px; margin: 0 auto;">
                         <div class="form-group">
@@ -51,9 +49,11 @@
                         </div>
 
                     </form>
+
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>

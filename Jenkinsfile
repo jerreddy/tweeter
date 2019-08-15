@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         DOCKER_USERNAME = 'sivaprasadreddy'
-        APPLICATION_NAME = 'tweeter'
+        APPLICATION_NAME = 'todolist'
     }
 
     parameters {

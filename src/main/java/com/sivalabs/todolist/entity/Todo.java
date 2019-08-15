@@ -1,4 +1,4 @@
-package com.sivalabs.tweeter.entity;
+package com.sivalabs.todolist.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,12 +10,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="tweets")
+@Table(name="todos")
 @Data
-public class Tweet implements Serializable {
+public class Todo implements Serializable {
     @Id
-    @SequenceGenerator(name = "tweet_id_generator", sequenceName = "tweet_id_seq", allocationSize = 1)
-    @GeneratedValue(generator = "tweet_id_generator")
+    @SequenceGenerator(name = "todo_id_generator", sequenceName = "todo_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "todo_id_generator")
     private Long id;
 
     @Column(nullable=false)

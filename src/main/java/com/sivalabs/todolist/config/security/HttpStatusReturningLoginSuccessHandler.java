@@ -1,4 +1,4 @@
-package com.sivalabs.tweeter.config.security;
+package com.sivalabs.todolist.config.security;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;

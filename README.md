@@ -1,3 +1,3 @@
-# Tweeter
+# todolist
 
-https://sivalabs-tweeter.herokuapp.com
+https://sivalabs-todolist.herokuapp.com
